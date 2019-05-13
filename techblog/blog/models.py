@@ -7,7 +7,8 @@ from django.shortcuts import reverse
 
 class PostModel(models.Model):
     title = models.CharField(max_length=256)
-    author = models.ForeignKey('auth.user',on_delete=models.CASCADE)
+    # author = models.ForeignKey('auth.user',on_delete=models.CASCADE)
+    author = models.CharField(max_length=256)
     post = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True,null=True)

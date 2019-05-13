@@ -16,4 +16,5 @@ urlpatterns = [
     path('comment/post<int:pk>/approve',views.comment_approve,name='comment_approve'),          # Approve comment
     path('comment/post<int:pk>/remove',views.comment_remove,name='comment_remove'),             # Remove comment
     path('post/publish/post<int:pk>',views.post_publish,name='post_publish'),                   # publish post
+    path('accounts/register',views.CreateUserView,name='register'),
 ]

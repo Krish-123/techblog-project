@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django import forms
 from . models import PostModel,CommentModel
 
@@ -22,3 +23,9 @@ class CommentForm(forms.ModelForm):
             'author':forms.TextInput(attrs={'class':'textinputclass'}),
             'comment':forms.Textarea(attrs={'class': 'editable medium-editor-textarea'})
         }
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta():
+        model = User
+        fields = ['username','first_name','last_name','email','password']

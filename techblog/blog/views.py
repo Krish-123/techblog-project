@@ -6,7 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .models import PostModel,CommentModel
-from .forms import PostForm,CommentForm
+from .forms import PostForm,CommentForm,UserForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 class IndexView(ListView):
@@ -104,3 +105,25 @@ def post_publish(request,pk):
     post = get_object_or_404(PostModel,pk=pk)
     post.publish()
     return redirect('blog:post_detail',pk=post.pk)
+
+#########################################  User reqgistration  ##################################################
+
+# class CreateUserView(CreateView):    
+#     form_class = UserForm
+#     model = User
+#     context_object_name = 'userform'
+#     template_name = 'registration/register.html'
+
+def CreateUserView(request):
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(user.password)
+            user.save()
+            return HttpResponseRedirect(reverse('login'))
+    else:
+        form = UserForm()
+    
+    return render(request,'registration/register.html',{'form':form})

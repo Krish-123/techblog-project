@@ -57,7 +57,8 @@
                     <li><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
                     <li><a href="" class="nav-link">Welcome {{ user.user_name }}</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" class="nav-link"><i class="fa fa-user fa-1x"></i></a></li>
+                    <li><a href="{% url 'blog:register' %}" class="nav-link">Register <i class="fa fa-user-plus"></i></a></li>
+                    <li><a href="{% url 'login' %}" class="nav-link">Login <i class="fa fa-user fa-1x"></i></a></li>
                 {% endif %}
             </div>
         </div>
