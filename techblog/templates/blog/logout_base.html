@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between bg-light">
+        <div class="container">
+            <div class="left">
+                <div class="navbar-nav">
+                    <a href="" class="navbar-brand">Tech Blog</a>
+                    <a href="" class="nav-item nav-link">About</a>
+                    <a href="" class="nav-item nav-link">GitHub</a>
+                    <a href="" class="nav-item nav-link">Linkedin</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="navbar-nav">
+                    <a href="" class="nav-item nav-link"><i class="fa fa-user fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        {% block body_block %}
+
+        {% endblock %}
+    </div>
+
+</body>
+</html>

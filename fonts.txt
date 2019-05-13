@@ -1,0 +1,13 @@
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+font-family: 'Raleway', sans-serif;
+
+<link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+font-family: 'Yeon Sung', cursive;
+
+<link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+font-family: 'Coda', cursive;
+
+
+Navbar
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+font-family: 'Roboto', sans-serif;
