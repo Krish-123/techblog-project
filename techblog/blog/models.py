@@ -7,7 +7,7 @@ from django.shortcuts import reverse
 
 class PostModel(models.Model):
     title = models.CharField(max_length=256)
-    author = models.ForeignKey('auth.user',on_delete='CASCADE')
+    author = models.ForeignKey('auth.user',on_delete=models.CASCADE)
     post = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True,null=True)
@@ -19,16 +19,16 @@ class PostModel(models.Model):
         self.published_date = timezone.now()
         self.save()
     def approved_comments(self):
-        self.comments.objects.filter(approved=True)
+        return self.comments.filter(approved=True)
     def get_absolute_url(self):
-        return reverse('blog:detail',kwargs={'pk':self.pk})
+        return reverse('blog:post_detail',kwargs={'pk':self.pk})
 
 class CommentModel(models.Model):
     author = models.CharField(max_length=256)
     comment = models.TextField()
     commented_date = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default=False)
-    post = models.ForeignKey(PostModel,related_name='comments',on_delete='CASCADE')
+    post = models.ForeignKey(PostModel,related_name='comments',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment

@@ -1,12 +1,79 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Medium style editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+    
+    <!-- Google fonts -->
+
+    <!-- font-family: 'Roboto', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- font-family: 'Raleway', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- font-family: 'Yeon Sung', cursive; -->
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <!-- font-family: 'Anton', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <!-- font-family: 'Kodchasan', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
+    <!-- font-family: 'Titillium Web', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+    <!-- font-family: 'Pacifico', cursive; -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Titillium+Web" rel="stylesheet">
+
 </head>
 <body>
     
+    <!-- Navbar     -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light techfont custom-navbar">
+        <div class="container">
+            <div class="nav navbar-nav">
+                <li><a href="{% url 'blog:post_list' %}" class="nav-item navbar-brand bigbrand">Tech Blog</a></li>
+                <li><a href="{% url 'blog:about' %}" class="nav-item nav-link">About</a></li>
+                <li><a href="" class="nav-item nav-link">GitHub</a></li>
+                <li><a href="" class="nav-item nav-link">LinkedIn</a></li>
+            </div>
+
+            <div class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'blog:post_new' %}" class="nav-link">New Post</a></li>
+                    <li><a href="{% url 'blog:post_draft_list' %}" class="nav-link">Drafts</a></li>
+                    <li><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+                    <li><a href="" class="nav-link">Welcome {{ user.user_name }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="nav-link"><i class="fa fa-user fa-1x"></i></a></li>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog_post">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

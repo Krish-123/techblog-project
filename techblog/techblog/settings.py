@@ -126,4 +126,4 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-LOGIN_REDIRECT_URL = '/blog/posts/page1'
+LOGIN_REDIRECT_URL = '/blog/posts'
