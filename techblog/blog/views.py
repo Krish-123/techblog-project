@@ -1,12 +1,12 @@
 from django.shortcuts import render,reverse,get_object_or_404,redirect
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
-from .models import PostModel,CommentModel
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import PostForm,CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from .models import PostModel,CommentModel
+from .forms import PostForm,CommentForm
 
 # Create your views here.
 class IndexView(ListView):
