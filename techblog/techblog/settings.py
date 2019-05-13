@@ -121,7 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
 
+if 'E:\\' in BASE_DIR:
+    STATIC_ROOT = 'static'
+else:
+    STATIC_ROOT = '/home/saikrishna1996/saikrishna1996.pythonanywhere.com/techblog/static'
 
 LOGIN_REDIRECT_URL = '/blog/posts'
